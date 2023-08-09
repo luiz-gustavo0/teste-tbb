@@ -35,3 +35,5 @@ Inicie o servidor
 ```bash
   npm run start
 ```
+## Autor
+[Luiz Gustavo Santos](https://www.linkedin.com/in/luiz-gustavo0/)
