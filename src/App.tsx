@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+
+import { Filter } from './components/Filter';
+import { Header } from './components/Header';
+import { Products } from './components/Products';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [filters, setFilters] = useState<string[]>([]);
+  const [search, setSearch] = useState<string>('');
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='w-full min-h-screen'>
+      <div className='w-full max-w-[1600px] mx-auto'>
+        <Header search={search} setSearch={setSearch} />
+        <main className='w-full flex px-6 pt-6 gap-6'>
+          <Filter filter={filters} setFilter={setFilters} />
+
+          <div className='w-full'>
+            <div className='py-2 border-b border-b-slate-900 mb-6'>
+              <span className='text-slate-900'>Produtos</span>
+            </div>
+            <Products filters={filters} search={search} />
+          </div>
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
